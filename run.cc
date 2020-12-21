@@ -3,6 +3,7 @@
 #include <functional>
 #include <string>
 #include <cmath>
+#include <cassert>
 
 #include "Data.hh"
 
@@ -61,6 +62,26 @@ void runTests() {
     std::cout << (test() ? " ok" : " FAILED!") << std::endl;
 }
 
+/*int Data :: checkCompatibility(const int n)
+{ 
+  for (int i = 0; i < size+1; i++)
+  {
+    
+    double mean = (datA.measurement(i)+datB.measurement(i)+datC.measurement(i)+datD.measurement(i))/4;
+    cout<< mean<< endl;
+    
+    double del1_y= abs(datA.measurement(i)-mean);
+    double del2_y= abs(datB.measurement(i)-mean);
+    double del3_y= abs(datC.measurement(i)-mean);
+    double del4_y= abs(datD.measurement(i)-mean);
+    
+    double sd =sqrt((pow(del1_y,2) +pow(del2_y,2) +pow(del3_y,2) +pow(del4_y,2))/4);
+  //cout<<"Standard deviation is:"<<sd<<endl;
+  }
+    
+ return mean; 
+}*/
+
 
 int main() {
   
@@ -102,23 +123,39 @@ int main() {
        << endl;
   cout << "measurement of experiment D in bin 27: " << datD.measurement(27)
        << endl;
-  double mean = (datA.measurement(27)+datB.measurement(27)+datC.measurement(27)+datD.measurement(27))/4;
-  cout<< "mean:"<<mean<<endl;
+       
+  cout<< "bin 27 of Exp C and Exp D agree within 1*sigma: " << datC.sigma(datD,1,27) << endl;
+  cout<< "bin 27 of Exp C and Exp D agree within 2*sigma: " << datC.sigma(datD,2,27) << endl;
+  cout<< "bin 27 of Exp C and Exp D agree within 3*sigma: " << datC.sigma(datD,3,27) << endl;
   
-  double del1_y= abs(datA.measurement(27)-mean);
-  double del2_y= abs(datB.measurement(27)-mean);
-  double del3_y= abs(datC.measurement(27)-mean);
-  double del4_y= abs(datD.measurement(27)-mean);
+  cout<< "Number of bins that deviate 1*sigma for Exp A and Exp B: " << datA.checkCompatibility(datB,1) << endl;
   
-  /*cout<< "measurement of difference is:"<< del1_y<< endl;
-  cout<< "measurement of difference is:"<< del2_y<< endl;
-  cout<< "measurement of difference is:"<< del3_y<< endl;
-  cout<< "measurement of difference is:"<< del4_y<< endl;*/
-  
-  double sd =sqrt((pow(del1_y,2) +pow(del2_y,2) +pow(del3_y,2) +pow(del4_y,2))/4);
-  cout<<"Standard deviation is:"<<sd<<endl;
+  cout<< "Number of bins that deviate 1*sigma for Exp A and Exp C: " << datA.checkCompatibility(datC,1) << endl;
   
   
+  cout<< "Number of bins that deviate 1*sigma for Exp A and Exp D: " << datA.checkCompatibility(datD,1) << endl;
+  
+  
+  cout<< "Number of bins that deviate 1*sigma for Exp B and Exp C: " << datB.checkCompatibility(datC,1) << endl;
+  
+  
+  cout<< "Number of bins that deviate 1*sigma for Exp B and Exp D: " << datB.checkCompatibility(datD,1) << endl;
+  
+  
+  cout<< "Number of bins that deviate 1*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,1) << endl;
+  
+  
+   //datA.checkCompatibility(datB, 2);
+   
+       
+       
+       
+  
+ 
+ // int Data :: checkCompatibility(int n); 
+  
+  
+  //assertSizes();
   return 0;
 }
-
+//void Data::assertSizes() { assert(m_data.size() + 1 == m_bins.size()); }
