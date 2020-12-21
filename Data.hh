@@ -10,13 +10,13 @@ class Data {
   
   unsigned int size() const { return m_data.size(); }
   double measurement(int i) const { return m_data[i]; }
-  double binCenter(int i) const {(binHigh(i)+binLow(i))/2;}
+  double binCenter(int i) const {return ((binHigh(i)+binLow(i))/2);}
   double binLow(int i) const { return m_bins[i]; }
   double binHigh(int i) const { return m_bins[i+1]; }
   double error(int i) const { return m_errors[i]; }
   bool sigma(const Data& in, int n, int i) const{   
-    double delY = abs(in.measurement(i) - m_data[i]);
-    double spe = sqrt( pow((1-in.m_data[i])*m_errors[i],2) + pow((m_data[i]-1)*in.error(i),2) );
+    double delY = fabs(in.measurement(i) - m_data[i]);
+    double spe = sqrt( pow(m_errors[i],2) + pow(in.error(i),2) );
     if (delY>n*spe)
     { return true;}
     else 
