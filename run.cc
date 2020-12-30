@@ -144,8 +144,12 @@ int main() {
   
   cout<< "Number of bins that deviate 1*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,1) << endl;
   
-  cout<< "Average of Exp A and Exp B :" << datA.checkCompatibility(datB,1) << datA.average(datB,1) << endl;
-  
+  cout<< "Average of Exp A and Exp B :"  << endl;
+  std::vector<double> a = datA.average(datB,1);
+  for(int i = 0; i < a.size(); i++)
+  {
+    cout<<a[i]<<"\n";
+  }
   //assertSizes();
   return 0;
 }

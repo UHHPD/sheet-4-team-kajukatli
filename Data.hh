@@ -14,6 +14,7 @@ class Data {
   double binLow(int i) const { return m_bins[i]; }
   double binHigh(int i) const { return m_bins[i+1]; }
   double error(int i) const { return m_errors[i]; }
+  
   bool sigma(const Data& in, int n, int i) const{   
     double delY = fabs(in.measurement(i) - m_data[i]);
     double spe = sqrt( pow(m_errors[i],2) + pow(in.error(i),2) );
@@ -22,6 +23,7 @@ class Data {
     else 
     {return false;}
   }
+  
   int checkCompatibility( const Data& in, int n){
     int counter = 0;
     
@@ -33,14 +35,14 @@ class Data {
     return counter;
   }
   
-  int average( const Data& in, int n)
+  std::vector<double> average( const Data& in, int n)
   {
-    double avgy;
+    std::vector<double> avgy;
     for(int i=0; i<in.size(); i++)
     {
       double w1= 1/ pow(m_errors[i],2);
       double w2= 1/ pow(in.error(i),2);
-      avgy= (w1*m_errors[i])+(w2*in.error(i))/(w1+w2);      
+      avgy.push_back((w1*m_data[i])+(w2*in.measurement(i))/(w1+w2));      
     }
     return avgy;
   }
