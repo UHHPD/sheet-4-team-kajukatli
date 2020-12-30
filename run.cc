@@ -144,16 +144,7 @@ int main() {
   
   cout<< "Number of bins that deviate 1*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,1) << endl;
   
-  
-   //datA.checkCompatibility(datB, 2);
-   
-       
-       
-       
-  
- 
- // int Data :: checkCompatibility(int n); 
-  
+  cout<< "Average of Exp A and Exp B :" << datA.checkCompatibility(datB,1) << datA.average(datB,1) << endl;
   
   //assertSizes();
   return 0;
