@@ -46,7 +46,19 @@ class Data {
     }
     return avgy;
   }
-      
+    
+    // Function f(x):
+   float fun_f(float a, float b, float c, float d, float x)
+   {
+     float f= a + b*x + c*(exp(-d*x));
+     return f;
+   }
+   
+    
+    
+    
+    
+    
  private:
   Data() {}  // disallow empty data set
   void assertSizes();

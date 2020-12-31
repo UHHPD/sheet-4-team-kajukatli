@@ -143,14 +143,22 @@ int main() {
   
   
   cout<< "Number of bins that deviate 1*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,1) << endl;
-  
+ 
+  // exercise 1 e:
   cout<< "Average of Exp A and Exp B :"  << endl;
   std::vector<double> a = datA.average(datB,1);
   for(int i = 0; i < a.size(); i++)
   {
     cout<<a[i]<<"\n";
   }
-  //assertSizes();
+  
+  //Exercise 2 a:
+  cout<< "The background is :" << datA.fun_f( 0.005, -0.00001, 0.08, 0.015, 1) << endl;
+  cout<< "The background is :" << datB.fun_f( 0.005, -0.00001, 0.08, 0.015, 2) << endl;
+  cout<< "The background is :" << datC.fun_f( 0.005, -0.00001, 0.08, 0.015, 3) << endl;
+  cout<< "The background is :" << datD.fun_f( 0.005, -0.00001, 0.08, 0.015, 4) << endl;
+  
+  
   return 0;
 }
-//void Data::assertSizes() { assert(m_data.size() + 1 == m_bins.size()); }
+
