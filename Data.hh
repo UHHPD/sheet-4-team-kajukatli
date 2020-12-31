@@ -40,9 +40,9 @@ class Data {
     std::vector<double> avgy;
     for(int i=0; i<in.size(); i++)
     {
-      double w1= 1/ pow(m_errors[i],2);
-      double w2= 1/ pow(in.error(i),2);
-      avgy.push_back((w1*m_data[i])+(w2*in.measurement(i))/(w1+w2));      
+      double w1= 1/ (pow(m_errors[i],2));
+      double w2= 1/ (pow(in.error(i),2));
+      avgy.push_back(((w1*m_data[i])+(w2*in.measurement(i)))/(w1+w2));      
     }
     return avgy;
   }
