@@ -133,7 +133,7 @@ int main() {
   }
   
   //Exercise 2(first subpart):
-  cout<< "The background is :"  << endl;
+  /*cout<< "The background is :"  << endl;
   std::vector<double> fu=datA.fun_f(0.005, -0.00001, 0.08, 0.015);
   for (int i=0; i< fu.size(); i++)
   {
@@ -141,7 +141,7 @@ int main() {
   }
   
  // Exercise 2(second subpart):
-  /*cout<<"The X^2/ndf :" << endl;
+  cout<<"The X^2/ndf :" << endl;
   std::vector<double> ch=datA.func_X(datB, 0.005, -0.00001, 0.08, 0.015);
   for (int i=0; i< ch.size(); i++)
   {

@@ -48,7 +48,7 @@ class Data {
   }
     
     // Function f(x):
-   std::vector<double> fun_f(const Data& in, double a, double b, double c, double d)
+   /*std::vector<double> fun_f(double a, double b, double c, double d)
    {
      std:: vector<double> func;
      for(int i=0; i< in.size(); ++i)
@@ -66,11 +66,11 @@ class Data {
      double X = 0.0;
      for(int i= 0; i<in.size();i++)
      {
-       X+= pow((in.measurement(i)-fun_f),2)/(pow(in.error(i),2));
+       X+= pow((in.measurement(i)-fun_f()),2)/(pow(in.error(i),2));
        chi.push_back(X);
      }
      return chi;
-   }
+   }*/
    
     
     
