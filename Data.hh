@@ -48,10 +48,28 @@ class Data {
   }
     
     // Function f(x):
-   float fun_f(float a, float b, float c, float d, float x)
+   std::vector<double> fun_f(const Data& in, double a, double b, double c, double d)
    {
-     float f= a + b*x + c*(exp(-d*x));
-     return f;
+     std:: vector<double> func;
+     for(int i=0; i< in.size(); ++i)
+     {
+     double f= a + b*in.binCenter(i) + c*(exp(-d*in.binCenter(i)));
+     func.push_back(f);
+     }
+     return func;
+   }
+   
+   //chi^2 function:
+   std::vector<double> func_X( const Data& in, int i)
+   {
+     std::vector<double> chi;
+     double X = 0.0;
+     for(int i= 0; i<in.size();i++)
+     {
+       X+= pow((in.measurement(i)-fun_f),2)/(pow(in.error(i),2));
+       chi.push_back(X);
+     }
+     return chi;
    }
    
     

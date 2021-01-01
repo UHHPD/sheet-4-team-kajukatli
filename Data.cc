@@ -38,12 +38,7 @@ Data::Data(const std::string& filename) {
     m_errors.push_back(errors);
   }
   
-  /*for (int i=0; i< size; ++i)
-  {
-    double avg_y;
-    file >> avg_y;
-    m_data.push_back(avg_y);
-  }*/
+  
   // done! close the file
   file.close();
 

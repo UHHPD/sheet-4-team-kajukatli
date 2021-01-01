@@ -62,26 +62,6 @@ void runTests() {
     std::cout << (test() ? " ok" : " FAILED!") << std::endl;
 }
 
-/*int Data :: checkCompatibility(const int n)
-{ 
-  for (int i = 0; i < size+1; i++)
-  {
-    
-    double mean = (datA.measurement(i)+datB.measurement(i)+datC.measurement(i)+datD.measurement(i))/4;
-    cout<< mean<< endl;
-    
-    double del1_y= abs(datA.measurement(i)-mean);
-    double del2_y= abs(datB.measurement(i)-mean);
-    double del3_y= abs(datC.measurement(i)-mean);
-    double del4_y= abs(datD.measurement(i)-mean);
-    
-    double sd =sqrt((pow(del1_y,2) +pow(del2_y,2) +pow(del3_y,2) +pow(del4_y,2))/4);
-  //cout<<"Standard deviation is:"<<sd<<endl;
-  }
-    
- return mean; 
-}*/
-
 
 int main() {
   
@@ -152,12 +132,21 @@ int main() {
     cout<<a[i]<<"\n";
   }
   
-  //Exercise 2 a:
-  cout<< "The background is :" << datA.fun_f( 0.005, -0.00001, 0.08, 0.015, 1) << endl;
-  cout<< "The background is :" << datB.fun_f( 0.005, -0.00001, 0.08, 0.015, 2) << endl;
-  cout<< "The background is :" << datC.fun_f( 0.005, -0.00001, 0.08, 0.015, 3) << endl;
-  cout<< "The background is :" << datD.fun_f( 0.005, -0.00001, 0.08, 0.015, 4) << endl;
+  //Exercise 2(first subpart):
+  cout<< "The background is :"  << endl;
+  std::vector<double> fu=datA.fun_f(0.005, -0.00001, 0.08, 0.015);
+  for (int i=0; i< fu.size(); i++)
+  {
+    cout<< fu[i] << "\n";
+  }
   
+ // Exercise 2(second subpart):
+  /*cout<<"The X^2/ndf :" << endl;
+  std::vector<double> ch=datA.func_X(datB, 0.005, -0.00001, 0.08, 0.015);
+  for (int i=0; i< ch.size(); i++)
+  {
+    cout<< ch[i]/52 << "\n";
+  }*/
   
   return 0;
 }
