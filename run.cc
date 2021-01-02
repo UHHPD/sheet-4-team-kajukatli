@@ -133,20 +133,41 @@ int main() {
   }
   
   //Exercise 2(first subpart):
-  /*cout<< "The background is :"  << endl;
-  std::vector<double> fu=datA.fun_f(0.005, -0.00001, 0.08, 0.015);
+  cout<< "The background is :"  << endl;
+  std::vector<double> fu=datA.fun_f();
   for (int i=0; i< fu.size(); i++)
   {
     cout<< fu[i] << "\n";
   }
   
  // Exercise 2(second subpart):
-  cout<<"The X^2/ndf :" << endl;
-  std::vector<double> ch=datA.func_X(datB, 0.005, -0.00001, 0.08, 0.015);
+  cout<<"The X^2/ndf of Exp A :" << endl;
+  std::vector<double> ch=datA.func_X();
   for (int i=0; i< ch.size(); i++)
   {
     cout<< ch[i]/52 << "\n";
-  }*/
+  }
+  
+  cout<<"The X^2/ndf of Exp B :" << endl;
+  std::vector<double> ch2=datB.func_X();
+  for (int i=0; i< ch2.size(); i++)
+  {
+    cout<< ch2[i]/52 << "\n";
+  }
+  
+  cout<<"The X^2/ndf of Exp C :" << endl;
+  std::vector<double> ch3=datC.func_X();
+  for (int i=0; i< ch3.size(); i++)
+  {
+    cout<< ch3[i]/52 << "\n";
+  }
+  
+  cout<<"The X^2/ndf of Exp D :" << endl;
+  std::vector<double> ch4=datD.func_X();
+  for (int i=0; i< ch4.size(); i++)
+  {
+    cout<< ch4[i]/52 << "\n";
+  }
   
   return 0;
 }

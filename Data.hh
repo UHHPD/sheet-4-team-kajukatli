@@ -1,3 +1,4 @@
+
 #ifndef DATA_HH
 #define DATA_HH
 #include <cmath>
@@ -26,7 +27,6 @@ class Data {
   
   int checkCompatibility( const Data& in, int n){
     int counter = 0;
-    
     for (int i=0; i <in.size(); i++)
     { 
       if (sigma(in,n,i))
@@ -48,29 +48,30 @@ class Data {
   }
     
     // Function f(x):
-   /*std::vector<double> fun_f(double a, double b, double c, double d)
+   std::vector<double> fun_f()
    {
      std:: vector<double> func;
-     for(int i=0; i< in.size(); ++i)
+     for(int i=0; i< size(); ++i)
      {
-     double f= a + b*in.binCenter(i) + c*(exp(-d*in.binCenter(i)));
+     double f= 0.005 + (-0.00001)*((m_bins[i]+m_bins[i+1])/2) + 0.08*(exp(-0.015*((m_bins[i]+m_bins[i+1])/2)));
      func.push_back(f);
      }
      return func;
    }
    
    //chi^2 function:
-   std::vector<double> func_X( const Data& in, int i)
+   std::vector<double> func_X()
    {
+     std::vector<double> f=fun_f();
      std::vector<double> chi;
      double X = 0.0;
-     for(int i= 0; i<in.size();i++)
+     for(int i= 0;i<size();i++)
      {
-       X+= pow((in.measurement(i)-fun_f()),2)/(pow(in.error(i),2));
-       chi.push_back(X);
+       X= X + (pow((m_data[i]-f[i]),2)/(pow(m_errors[i],2)));
      }
+     chi.push_back(X);
      return chi;
-   }*/
+   }
    
     
     
