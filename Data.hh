@@ -35,6 +35,7 @@ class Data {
     return counter;
   }
   
+  // Exercise 1 e:
   std::vector<double> average( const Data& in, int n)
   {
     std::vector<double> avgy;
@@ -73,10 +74,6 @@ class Data {
      return chi;
    }
    
-    
-    
-    
-    
     
  private:
   Data() {}  // disallow empty data set

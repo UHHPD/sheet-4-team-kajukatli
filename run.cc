@@ -63,14 +63,10 @@ void runTests() {
 }
 
 
-int main() {
-  
+int main() 
+{  
   using namespace std;
   
-  //double del1_y= datA.measurement(27)-datB.measurement(27);
-  //cout<< "measurement of difference is:"<< del1_y<< endl;
-  
-
   cout << "******************************************************" << endl;
   runTests();
   cout << "******************************************************" << endl;
@@ -85,7 +81,7 @@ int main() {
   da.push_back(datB);
   da.push_back(datC);
   da.push_back(datD);
-
+  
   // here is the data from experiment A
   cout << "bin 27: from " << datA.binLow(27) << " to " << datA.binHigh(27)
        << endl;
@@ -123,7 +119,26 @@ int main() {
   
   
   cout<< "Number of bins that deviate 1*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,1) << endl;
- 
+
+  
+  cout<< "Number of bins that deviate 2*sigma for Exp A and Exp B: " << datA.checkCompatibility(datB,2) << endl;
+  
+  cout<< "Number of bins that deviate 2*sigma for Exp A and Exp C: " << datA.checkCompatibility(datC,2) << endl;
+  
+  
+  cout<< "Number of bins that deviate 2*sigma for Exp A and Exp D: " << datA.checkCompatibility(datD,2) << endl;
+  
+  
+  cout<< "Number of bins that deviate 2*sigma for Exp B and Exp C: " << datB.checkCompatibility(datC,2) << endl;
+  
+  
+  cout<< "Number of bins that deviate 2*sigma for Exp B and Exp D: " << datB.checkCompatibility(datD,2) << endl;
+  
+  
+  cout<< "Number of bins that deviate 2*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,2) << endl;
+  
+  
+  
   // exercise 1 e:
   cout<< "Average of Exp A and Exp B :"  << endl;
   std::vector<double> a = datA.average(datB,1);
@@ -131,6 +146,25 @@ int main() {
   {
     cout<<a[i]<<"\n";
   }
+  
+  cout<< "Average of Exp C and Exp D :" << endl;
+  std::vector<double> b= datC.average(datD,1);
+  for(int i=0; i< b.size(); i++)
+  {
+    cout<< b[i]<< "\n";
+  }
+  
+  std::vector<std::vector <double>>  av;
+  for(int i=0; i< 56; i++)
+  {
+   av[i]=a[i].average(b[i],1);
+  }
+  cout<< "The combined dataset is :"<< endl;
+  for(int i=0; i< 56; i++)
+  {
+    cout<< av[i]<< "\n";
+  }
+  
   
   //Exercise 2(first subpart):
   cout<< "The background is :"  << endl;
@@ -169,6 +203,17 @@ int main() {
     cout<< ch4[i]/52 << "\n";
   }
   
-  return 0;
+  /*cout<< "The number of datapoints deferring for 2*sigma :" << endl;
+  std::vector<double> ch
+  /*d.push_back(datA,datB,datC,datD)
+  cout << "The X^2/ndf of all the datasets :" << endl;
+  std::vector<double> C= d.func_X();
+  for (int i=0; i< C.size(); i++)
+  {
+    cout<< C[i]/52 << "\n";
+  }*/
+  
+ return 0;
+  
 }
 
