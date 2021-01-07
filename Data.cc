@@ -7,6 +7,7 @@
 
 using namespace std;
 
+
 Data::Data(const std::string& filename) {
   ifstream file(filename);
 
@@ -31,7 +32,13 @@ Data::Data(const std::string& filename) {
     file >> entries;
     m_data.push_back(entries);
   }
-
+  for (int i = 0; i < size; ++i) {
+    double errors;
+    file >> errors;
+    m_errors.push_back(errors);
+  }
+  
+  
   // done! close the file
   file.close();
 
@@ -39,3 +46,20 @@ Data::Data(const std::string& filename) {
 };
 
 void Data::assertSizes() { assert(m_data.size() + 1 == m_bins.size()); }
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
