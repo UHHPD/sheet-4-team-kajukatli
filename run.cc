@@ -91,6 +91,8 @@ int main()
        << endl;
   cout << "bin 27: from " << datD.binLow(27) << " to " << datD.binHigh(27)
        << endl;
+       
+       
   cout << "measurement of experiment A in bin 27: " << datA.measurement(27)
        << endl;
   cout << "measurement of experiment B in bin 27: " << datB.measurement(27)
@@ -99,6 +101,7 @@ int main()
        << endl;
   cout << "measurement of experiment D in bin 27: " << datD.measurement(27)
        << endl;
+       
        
   cout<< "bin 27 of Exp C and Exp D agree within 1*sigma: " << datC.sigma(datD,1,27) << endl;
   cout<< "bin 27 of Exp C and Exp D agree within 2*sigma: " << datC.sigma(datD,2,27) << endl;
@@ -119,6 +122,8 @@ int main()
   
   
   cout<< "Number of bins that deviate 1*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,1) << endl;
+  
+  //Exercise-2a
 
   
   cout<< "Number of bins that deviate 2*sigma for Exp A and Exp B: " << datA.checkCompatibility(datB,2) << endl;
@@ -137,44 +142,15 @@ int main()
   
   cout<< "Number of bins that deviate 2*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,2) << endl;
   
-  
-  
-  // exercise 1 e:
-  cout<< "Average of Exp A and Exp B :"  << endl;
-  std::vector<double> a = datA.average(datB,1);
-  for(int i = 0; i < a.size(); i++)
-  {
-    cout<<a[i]<<"\n";
-  }
-  
-  cout<< "Average of Exp C and Exp D :" << endl;
-  std::vector<double> b= datC.average(datD,1);
-  for(int i=0; i< b.size(); i++)
-  {
-    cout<< b[i]<< "\n";
-  }
-  
-  std::vector<std::vector <double>>  av;
-  for(int i=0; i< 56; i++)
-  {
-   av[i]=a[i].average(b[i],1);
-  }
-  cout<< "The combined dataset is :"<< endl;
-  for(int i=0; i< 56; i++)
-  {
-    cout<< av[i]<< "\n";
-  }
-  
-  
   //Exercise 2(first subpart):
-  cout<< "The background is :"  << endl;
+  /*cout<< "The background is :"  << endl;
   std::vector<double> fu=datA.fun_f();
   for (int i=0; i< fu.size(); i++)
   {
     cout<< fu[i] << "\n";
-  }
+  }*/
   
- // Exercise 2(second subpart):
+ // Exercise 2b
   cout<<"The X^2/ndf of Exp A :" << endl;
   std::vector<double> ch=datA.func_X();
   for (int i=0; i< ch.size(); i++)
@@ -203,15 +179,14 @@ int main()
     cout<< ch4[i]/52 << "\n";
   }
   
-  /*cout<< "The number of datapoints deferring for 2*sigma :" << endl;
-  std::vector<double> ch
-  /*d.push_back(datA,datB,datC,datD)
-  cout << "The X^2/ndf of all the datasets :" << endl;
-  std::vector<double> C= d.func_X();
-  for (int i=0; i< C.size(); i++)
-  {
-    cout<< C[i]/52 << "\n";
-  }*/
+  //Exercise-2c
+  
+  Data avgAB = datA.average(datB);
+  Data avgCD = datC.average(datD);
+  
+  Data avgT = avgAB.average(avgCD);
+  
+  cout<< "The X^2/ndf of combined data set is: " << avgT.func_X()[0]/52.0<<endl;
   
  return 0;
   

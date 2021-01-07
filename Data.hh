@@ -36,18 +36,25 @@ class Data {
   }
   
   // Exercise 1 e:
-  std::vector<double> average( const Data& in, int n)
-  {
+ Data average( const Data& in)
+  { 
+    Data av;
     std::vector<double> avgy;
+    std::vector<double> sig;
     for(int i=0; i<in.size(); i++)
     {
       double w1= 1/ (pow(m_errors[i],2));
       double w2= 1/ (pow(in.error(i),2));
-      avgy.push_back(((w1*m_data[i])+(w2*in.measurement(i)))/(w1+w2));      
+      sig.push_back(sqrt(1/(w1+w2)));
+      avgy.push_back(((w1*m_data[i])+(w2*in.measurement(i)))/(w1+w2));
     }
-    return avgy;
-  }
     
+    av.m_data = avgy;
+    av.m_errors = sig;
+    av.m_bins = in.m_bins;
+    return av;
+  }
+  
     // Function f(x):
    std::vector<double> fun_f()
    {
@@ -60,7 +67,7 @@ class Data {
      return func;
    }
    
-   //chi^2 function:
+   //chi^2 function:(We have to discuss this)
    std::vector<double> func_X()
    {
      std::vector<double> f=fun_f();
