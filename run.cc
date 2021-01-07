@@ -126,22 +126,55 @@ int main()
   //Exercise-2a
 
   
-  cout<< "Number of bins that deviate 2*sigma for Exp A and Exp B: " << datA.checkCompatibility(datB,2) << endl;
+  cout<< "Number of bins that deviate 2*sigma for Exp A and Exp B: " << datA.checkCompatibility(datB,2) << endl; 
+  
+  cout<< "\n";
+  
+  cout<< " The number of datapoints that deviate from 2*sigma is 1 and the maximum number of datapoints that are allowed to deviate from 2*sigma are 3( ~5% of total datapoints) "<< endl;
+  
+  cout<< "\n";
   
   cout<< "Number of bins that deviate 2*sigma for Exp A and Exp C: " << datA.checkCompatibility(datC,2) << endl;
   
+  cout<< "\n";
+  
+  cout<< " The number of datapoints that deviate from 2*sigma is 1 and the maximum number of datapoints that are allowed to deviate from 2*sigma are 3( ~5% of total datapoints) "<< endl;
+  
+  cout<< "\n";
   
   cout<< "Number of bins that deviate 2*sigma for Exp A and Exp D: " << datA.checkCompatibility(datD,2) << endl;
+  
+  cout<< "\n";
+  
+  cout<< " The number of datapoints that deviate from 2*sigma is 0 and the maximum number of datapoints that are allowed to deviate from 2*sigma are 3( ~5% of total datapoints) "<< endl;
+  
+  cout<< "\n";
   
   
   cout<< "Number of bins that deviate 2*sigma for Exp B and Exp C: " << datB.checkCompatibility(datC,2) << endl;
   
+  cout<< "\n";
+  
+  cout<< " The number of datapoints that deviate from 2*sigma is 1 and the maximum number of datapoints that are allowed to deviate from 2*sigma are 3( ~5% of total datapoints) "<< endl;
+  
+  cout<< "\n";
+  
   
   cout<< "Number of bins that deviate 2*sigma for Exp B and Exp D: " << datB.checkCompatibility(datD,2) << endl;
   
+  cout<< "\n";
+  
+  cout<< " The number of datapoints that deviate from 2*sigma is 4 and the maximum number of datapoints that are allowed to deviate from 2*sigma are 3( ~5% of total datapoints). "<< endl;
+  
+  cout<< "\n";
   
   cout<< "Number of bins that deviate 2*sigma for Exp C and Exp D: " << datC.checkCompatibility(datD,2) << endl;
   
+  cout<< "\n";
+  
+  cout<< " The number of datapoints that deviate from 2*sigma is 1 and the maximum number of datapoints that are allowed to deviate from 2*sigma are 3( ~5% of total datapoints). "<< endl;
+  
+  cout<< "\n";
   //Exercise 2(first subpart):
   /*cout<< "The background is :"  << endl;
   std::vector<double> fu=datA.fun_f();
@@ -157,6 +190,9 @@ int main()
   {
     cout<< ch[i]/52 << "\n";
   }
+  cout<< "The X^2 distribution for Exp A is a good fit." <<endl; 
+  
+  cout<< "\n";
   
   cout<<"The X^2/ndf of Exp B :" << endl;
   std::vector<double> ch2=datB.func_X();
@@ -164,6 +200,9 @@ int main()
   {
     cout<< ch2[i]/52 << "\n";
   }
+  cout<< "The X^2 distribution for Exp B is best fit." <<endl;
+  
+  cout<< "\n";
   
   cout<<"The X^2/ndf of Exp C :" << endl;
   std::vector<double> ch3=datC.func_X();
@@ -171,6 +210,9 @@ int main()
   {
     cout<< ch3[i]/52 << "\n";
   }
+  cout<< "The X^2 distribution for Exp B is a best fit." <<endl;
+  
+  cout<< "\n";
   
   cout<<"The X^2/ndf of Exp D :" << endl;
   std::vector<double> ch4=datD.func_X();
@@ -178,7 +220,9 @@ int main()
   {
     cout<< ch4[i]/52 << "\n";
   }
+  cout<< "The X^2 distribution for Exp B is a best fit." <<endl;
   
+  cout<< "\n";
   //Exercise-2c
   
   Data avgAB = datA.average(datB);
@@ -187,6 +231,8 @@ int main()
   Data avgT = avgAB.average(avgCD);
   
   cout<< "The X^2/ndf of combined data set is: " << avgT.func_X()[0]/52.0<<endl;
+  
+  cout<< "The X^2 distribution for combined data set suggests wrong hypothesis." <<endl;
   
  return 0;
   
